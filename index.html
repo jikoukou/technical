@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Dimitrios Koukougiannis" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Technical documentation about MongoDB- A NoSQL database"
+    />
+    <title>MongoDB technical documentation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header><h2>Introduction</h2></header>
+        <p>
+          MongoDB is a famous NoSQL database used by various organizations to
+          store their data. The data are saved in a JSON-like formed in the hard
+          hard disk in order to be used in the future. As stated by
+          <a
+            href="https://aws.amazon.com/documentdb/what-is-mongodb/"
+            target="_blank"
+            >AWS</a
+          >
+          MongoDB provides these features
+        </p>
+
+        <ul>
+          <li>Ad-hoc queries</li>
+          <li>Indexing</li>
+          <li>Replication</li>
+        </ul>
+      </section>
+      <section class="main-section" id="Installation">
+        <header><h2>Installation</h2></header>
+        <p>
+          To begin with you have to install the database. The database can be
+          used in various operating systems. Please choose accordingly:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://www.mongodb.com/docs/manual/administration/install-on-linux/"
+              target="_blank"
+              >Linux</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/"
+              target="_blank"
+              >MacOS</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/"
+              target="_blank"
+              >Windows</a
+            >
+          </li>
+        </ul>
+
+        <aside>
+          It is worth noting that the guides are referring to the community
+          edition of the database. If you would like to use MongoDB for your
+          company projects I suggest installing the Enterprise edition.
+        </aside>
+      </section>
+      <article id="commands">
+        <header><h2>Getting started</h2></header>
+        <p>
+          After completing the above steps we can start working with our
+          database. In this guide I am going to show how to perform a wide
+          variety of tasks using the Mongo Shell, although a GUI client might
+          seem easier.
+        </p>
+
+        <section class="main-section" id="Open_shell">
+          <header><h3>Open shell</h3></header>
+          <p>
+            To start typing commands a shell has to be opened. To do so you need
+            to open a terminal and type
+          </p>
+          <code> mongosh</code>
+          <p>
+            After opening the shell a test database is opened by default. In
+            order to see the database you are working to, you can type
+          </p>
+          <code>db</code>
+          <p>
+            Although we could work in test, we are going to create a new one
+            called mydb. The use command will not only create it but it will
+            also change the working enviroment to it
+          </p>
+          <code>use mydb</code>
+        </section>
+
+        <section class="main-section" id="Insert_data">
+          <header><h3>Insert data</h3></header>
+          <p>
+            The data in MongoDB are stored in collections. We could think that
+            the collections are the tables of a relational database, although
+            the data in them are much more flexible. The collections can store
+            different kinds of data, which may not have common fields. So let' s
+            assume we would like to create a new collection called students, in
+            which the name and age of two persons will be stored. By using the
+            <em>insertMany</em> command as shown below a new collection in the
+            chosen database is going to be created with the desired name and it
+            will contain the data of two students
+          </p>
+          <code>
+            db.students.insertMany([<br />{name: "Mark", <br />
+            date-of-birth: 2000 <br />}, <br />
+            {name: "Helen", <br />
+            date-of-birth: 1999<br />}<br />])
+          </code>
+          <p>
+            A useful feature of MongoDB is that you can assign a list of values
+            in an attribute of an object. To do so you have to give the values
+            like this
+          </p>
+          <code>attribute: [value1, value2, ...]</code>
+        </section>
+
+        <section class="main-section" id="Find_data">
+          <header><h3>Find data</h3></header>
+          <p>
+            A key functionality of a database is searching for data. To find
+            desired data in a collection when using Mongo, the
+            <em>find</em> command comes in mind, which receives arguments like
+          </p>
+          <code> {attribute1: value1, attribute2: value2, ...} </code>
+          <p>
+            So imagine we would like to find all students who were born in 1999.
+          </p>
+          <code> db.students.find({date-of-birth: 18}); </code>
+          <p>
+            Another important aspect of find is that it can show us all the
+            documents in a collection. To print them on screen type
+          </p>
+          <code> db.students.find({}); </code>
+        </section>
+        <section class="main-section" id="Delete_data">
+          <header><h3>Delete data</h3></header>
+          <p>
+            Finally we will discuss how to delete a document from a collection
+            using the <em>deleteMany({attribute: value, ...})</em> command. As
+            an example we will assume that we would like to delete all documents
+            from the collection <b>students</b>, in which the name is Helen. To
+            accomplish this type
+          </p>
+          <code> db.students.deleteMany({name: "Helen"}); </code>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
