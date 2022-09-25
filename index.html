@@ -14,13 +14,24 @@
   </head>
 
   <body>
+    <nav id="navbar">
+      <header><h2>Documentation</h2></header>
+      <ul>
+        <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+        <li><a href="#Installation" class="nav-link">Installation</a></li>
+        <li><a href="#Open_shell" class="nav-link">Open shell</a></li>
+        <li><a href="#Insert_data" class="nav-link">Insert data</a></li>
+        <li><a href="#Find_data" class="nav-link">Find data</a></li>
+        <li><a href="#Delete_data" class="nav-link">Delete data</a></li>
+      </ul>
+    </nav>
     <main id="main-doc">
       <section class="main-section" id="Introduction">
         <header><h2>Introduction</h2></header>
         <p>
           MongoDB is a famous NoSQL database used by various organizations to
           store their data. The data are saved in a JSON-like formed in the hard
-          hard disk in order to be used in the future. As stated by
+          disk in order to be used in the future. As stated by
           <a
             href="https://aws.amazon.com/documentdb/what-is-mongodb/"
             target="_blank"
@@ -39,7 +50,7 @@
         <header><h2>Installation</h2></header>
         <p>
           To begin with you have to install the database. The database can be
-          used in various operating systems. Please choose accordingly:
+          used in various operating systems. Please choose:
         </p>
         <ul>
           <li>
@@ -88,8 +99,9 @@
           </p>
           <code> mongosh</code>
           <p>
-            After opening the shell a test database is opened by default. In
-            order to see the database you are working to, you can type
+            After opening the shell a database called "test" is opened by
+            default. In order to see the database you are working to, you can
+            type
           </p>
           <code>db</code>
           <p>
@@ -105,7 +117,7 @@
           <p>
             The data in MongoDB are stored in collections. We could think that
             the collections are the tables of a relational database, although
-            the data in them are much more flexible. The collections can store
+            the data in them are much more flexible. Collections can store
             different kinds of data, which may not have common fields. So let' s
             assume we would like to create a new collection called students, in
             which the name and age of two persons will be stored. By using the
@@ -135,10 +147,8 @@
             <em>find</em> command comes in mind, which receives arguments like
           </p>
           <code> {attribute1: value1, attribute2: value2, ...} </code>
-          <p>
-            So imagine we would like to find all students who were born in 1999.
-          </p>
-          <code> db.students.find({date-of-birth: 18}); </code>
+          <p>So to find all students, who were born in 1999 we should type</p>
+          <code> db.students.find({date-of-birth: 1999}); </code>
           <p>
             Another important aspect of find is that it can show us all the
             documents in a collection. To print them on screen type
@@ -152,7 +162,7 @@
             using the <em>deleteMany({attribute: value, ...})</em> command. As
             an example we will assume that we would like to delete all documents
             from the collection <b>students</b>, in which the name is Helen. To
-            accomplish this type
+            accomplish this copy the following command
           </p>
           <code> db.students.deleteMany({name: "Helen"}); </code>
         </section>
